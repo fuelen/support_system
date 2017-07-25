@@ -12,6 +12,7 @@ gem 'cells-slim'
 gem 'cells-rails'
 gem 'simple_form'
 gem 'warden'
+gem 'sidekiq'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'

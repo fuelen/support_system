@@ -1,0 +1,3 @@
+h1 Hi #{@ticket.customer_name}
+p Your ticket number: #{@ticket.reference} (do not share this key)
+p You can track changes here: #{link_to ticket_url(@ticket), ticket_url(@ticket)}

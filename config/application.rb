@@ -14,5 +14,7 @@ module SupportSystem
     config.autoload_paths << Rails.root.join('app', 'utils')
 
     config.departments = File.read('config/departments.txt').lines.map(&:strip)
+
+    Sidekiq::Extensions.enable_delay!
   end
 end
