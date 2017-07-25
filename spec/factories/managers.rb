@@ -8,6 +8,10 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+# Indexes
+#
+#  index_managers_on_username  (username) UNIQUE
+#
 
 FactoryGirl.define do
   factory :manager do
