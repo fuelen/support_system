@@ -14,5 +14,5 @@
 #
 
 class Status < ApplicationRecord
-  enum kind: [:opened, :on_hold, :closed]
+  enum kind: %i[opened on_hold closed]
 end

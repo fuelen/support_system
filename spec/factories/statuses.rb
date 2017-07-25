@@ -15,8 +15,8 @@
 
 FactoryGirl.define do
   factory :status do
-    id "on_hold"
-    name "On Hold"
+    id 'on_hold'
+    name 'On Hold'
     kind :on_hold
   end
 end
