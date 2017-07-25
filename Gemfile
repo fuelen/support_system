@@ -28,6 +28,7 @@ group :development do
   gem 'letter_opener'
   gem 'awesome_print'
   gem 'jazz_fingers'
+  gem 'rails-erd'
 end
 
 group :test do
