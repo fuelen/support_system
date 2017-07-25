@@ -1,0 +1,46 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - config/**/*
+    - bin/*
+    - lib/tasks/**/*
+  TargetRubyVersion: 2.4
+
+Metrics/LineLength:
+  Max: 120
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+  Exclude:
+    - "**/*_spec.rb"
+
+Style/BlockDelimiters:
+  Enabled: false
+  Exclude:
+    - "**/*_spec.rb"
+
+Style/LambdaCall:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
