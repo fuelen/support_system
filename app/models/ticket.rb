@@ -29,4 +29,8 @@
 class Ticket < ApplicationRecord
   belongs_to :status
   belongs_to :manager, foreign_key: :owner_id, optional: true
+
+  def to_param
+    reference
+  end
 end
