@@ -1,0 +1,16 @@
+div
+  div
+    =author_name
+    |  at 
+    time =created_at
+  p =text
+  - if new_status.present?
+    small
+      | New status: 
+      = new_status
+    br
+  - if new_owner.present?
+    small
+      | New owner: 
+      = new_owner
+hr

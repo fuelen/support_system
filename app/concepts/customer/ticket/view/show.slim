@@ -6,3 +6,7 @@ p= body
 p
   strong Status: 
   = status
+hr
+= cell('customer/message/cell/new', message_form)
+hr
+= cell('customer/message/cell/row_item', collection: messages)

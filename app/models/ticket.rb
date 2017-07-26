@@ -29,6 +29,7 @@
 class Ticket < ApplicationRecord
   belongs_to :status
   belongs_to :owner, class_name: 'Manager', optional: true
+  has_many :messages
 
   scope :unassigned, (lambda do
     where(owner_id: nil)

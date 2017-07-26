@@ -12,7 +12,14 @@ class Manager
 
     def show
       run Ticket::Show
-      render concept(Ticket::Cell::Show, @model)
+      render concept(Ticket::Cell::Show, @model, contract_message: result['contract.message'])
+    end
+
+    def update
+      run Ticket::Update do
+        return redirect_to [:manager, @model]
+      end
+      render concept(Ticket::Cell::Show, @model, contract_message: result['contract.message'])
     end
   end
 end

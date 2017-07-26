@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725123956) do
+ActiveRecord::Schema.define(version: 20170726131830) do
 
   create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "username", null: false
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 20170725123956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_managers_on_username", unique: true
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ticket_id", null: false
+    t.text "text", null: false
+    t.bigint "author_id"
+    t.string "new_status_id"
+    t.bigint "new_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "fk_rails_995937c106"
+    t.index ["new_owner_id"], name: "fk_rails_6fcc381042"
+    t.index ["new_status_id"], name: "fk_rails_deb6472fa9"
+    t.index ["ticket_id"], name: "fk_rails_1a0b99fe7e"
   end
 
   create_table "statuses", id: :string, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -44,6 +58,10 @@ ActiveRecord::Schema.define(version: 20170725123956) do
     t.index ["status_id"], name: "fk_rails_7868b69687"
   end
 
+  add_foreign_key "messages", "managers", column: "author_id"
+  add_foreign_key "messages", "managers", column: "new_owner_id"
+  add_foreign_key "messages", "statuses", column: "new_status_id"
+  add_foreign_key "messages", "tickets"
   add_foreign_key "tickets", "managers", column: "owner_id"
   add_foreign_key "tickets", "statuses"
 end

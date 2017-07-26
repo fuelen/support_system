@@ -1,15 +1,12 @@
 module Manager::Ticket
   class Cell
-    class Show < Trailblazer::Cell
-      property :reference
-      property :subject
-      property :body
-      property :customer_name
-      property :customer_email
-      property :department
-
-      def status
-        model.status.name
+    class Show < Customer::Ticket::Cell::Show
+      # overwrite message_form because we want to use another url
+      def message_form
+        OpenStruct.new(
+          contract: options[:contract_message],
+          url: [:manager, model]
+        )
       end
     end
   end
