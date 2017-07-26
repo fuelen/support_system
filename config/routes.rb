@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   namespace :manager do
     root to: 'sessions#new'
     resource :sessions, only: %i[create destroy]
-    resources :tickets, only: %i[index show]
+    resources :tickets, only: %i[index show], param: :reference
   end
 end

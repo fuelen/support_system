@@ -3,6 +3,7 @@ module Customer::Ticket::Cell
     property :reference
     property :subject
     property :body
+    property :department
     property :customer_name
     property :customer_email
 

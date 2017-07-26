@@ -9,5 +9,10 @@ class Manager
                                             current_view: result['current_view']
       ))
     end
+
+    def show
+      run Ticket::Show
+      render concept(Ticket::Cell::Show, @model)
+    end
   end
 end
