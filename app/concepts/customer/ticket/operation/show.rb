@@ -3,7 +3,8 @@ module Customer::Ticket
     step :find_ticket!
 
     def find_ticket!(options, params:, **)
-      options['model'] = ::Ticket.find_by(reference: params[:reference])
+      # let handle not_found by rails
+      options['model'] = ::Ticket.find_by!(reference: params[:reference])
     end
   end
 end
