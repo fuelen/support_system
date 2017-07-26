@@ -28,7 +28,17 @@
 
 class Ticket < ApplicationRecord
   belongs_to :status
-  belongs_to :manager, foreign_key: :owner_id, optional: true
+  belongs_to :owner, class_name: 'Manager', optional: true
+
+  scope :unassigned, (lambda do
+    where(owner_id: nil)
+  end)
+
+  Status.kinds.keys.each do |status_kind|
+    scope status_kind, (lambda do
+      joins(:status).where(statuses: { kind: status_kind }).where.not(owner_id: nil)
+    end)
+  end
 
   def to_param
     reference

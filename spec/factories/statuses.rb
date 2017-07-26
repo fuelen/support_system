@@ -15,8 +15,8 @@
 
 FactoryGirl.define do
   factory :status do
-    id 'on_hold'
-    name 'On Hold'
+    sequence(:id) { |n| "on_hold-#{n}" }
+    sequence(:name) { |n| "On hold #{n}" }
     kind :on_hold
   end
 end

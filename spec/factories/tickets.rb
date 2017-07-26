@@ -34,6 +34,6 @@ FactoryGirl.define do
     subject 'I have a problem'
     body 'example'
     status
-    reference 'ABC-4F-ABC-8D-ABC'
+    sequence(:reference) { |n| "ABC-4F-ABC-8D-#{n}" }
   end
 end
