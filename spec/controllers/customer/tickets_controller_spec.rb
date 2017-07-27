@@ -57,4 +57,33 @@ RSpec.describe Customer::TicketsController, type: :controller do
       end
     end
   end
+
+  describe 'PUT #update' do
+    let!(:ticket) { create :ticket }
+    let!(:status) { create :status, id: :waiting_for_staff_response }
+
+    context 'success' do
+      let(:params) do
+        {
+          reference: ticket.reference,
+          message: {
+            text: 'test'
+          }
+        }
+      end
+
+      before { put :update, params: params }
+
+      it { expect(response).to redirect_to Ticket.last }
+    end
+
+    context 'invalid params' do
+      let!(:status) { create :status, id: :waiting_for_staff_response }
+      let(:params) { { reference: ticket.reference } }
+
+      before { put :update, params: params }
+
+      it { expect(response).to be_success }
+    end
+  end
 end

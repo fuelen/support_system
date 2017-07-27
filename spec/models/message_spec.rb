@@ -29,5 +29,9 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:author).class_name('Manager') }
+  it { is_expected.to belong_to(:new_owner).class_name('Manager') }
+  it { is_expected.to belong_to(:new_status).class_name('Status') }
+  it { is_expected.to belong_to(:new_status).class_name('Status') }
+  it { is_expected.to belong_to(:ticket) }
 end

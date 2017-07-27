@@ -1,4 +1,4 @@
-require_dependency 'app/concepts/manager/message/operation/build'
+require_dependency Rails.root.join('app/concepts/manager/message/operation/build')
 
 module Manager::Ticket
   class Show < Trailblazer::Operation

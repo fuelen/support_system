@@ -1,4 +1,4 @@
-require_dependency 'app/concepts/customer/message/operation/build'
+require_dependency Rails.root.join('app/concepts/customer/message/operation/build')
 
 module Customer::Ticket
   class Show < Trailblazer::Operation

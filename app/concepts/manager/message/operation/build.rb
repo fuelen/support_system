@@ -1,4 +1,4 @@
-require_dependency 'app/concepts/manager/message/contract/create'
+require_dependency Rails.root.join('app/concepts/manager/message/contract/create')
 
 module Manager::Message
   class Build < Trailblazer::Operation
