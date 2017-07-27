@@ -1,24 +1,27 @@
-# README
+# Support system
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+* ruby: 2.4.1
+* mariadb: 10.1
+* redis: 4.0
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```ShellSession
+$ asdf install
+$ bin/setup
+$ rails s
+$ sidekiq # in separate session
+```
 
-* System dependencies
+As a system administrator you can add new statuses without a need to modify existing code:
+```ShellSession
+$ rails c
+> Status.new(id: 'duplicated', name: 'Duplicated', kind: :closed)
+```
+where kind must be one of `closed`, `opened` or `on_hold`.
 
-* Configuration
+You can modify list of departments in `config/departments.txt`.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Other
+Ruby warnings are disabled in `.envrc` (install `donenv` for this).
