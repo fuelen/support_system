@@ -49,16 +49,24 @@ RSpec.describe Ticket, type: :model do
     let!(:closed_unassigned_ticket) { create :ticket, status: closed_status, owner: nil }
     let!(:closed_assigned_ticket)   { create :ticket, status: closed_status, owner: manager }
 
-    specify '#opened' do
+    specify '.opened' do
       expect(described_class.opened).to contain_exactly opened_assigned_ticket
     end
 
-    specify '#closed' do
+    specify '.closed' do
       expect(described_class.closed).to contain_exactly closed_assigned_ticket
     end
 
-    specify '#on_hold' do
+    specify '.on_hold' do
       expect(described_class.on_hold).to contain_exactly on_hold_assigned_ticket
     end
+  end
+
+  describe '.search' do
+    let!(:ticket1) { create :ticket, subject: 'test1', body: 'body1' }
+    let!(:ticket2) { create :ticket, subject: 'test2', body: 'body2' }
+
+    it { expect(described_class.search('1', in: :subject)).to contain_exactly ticket1 }
+    it { expect(described_class.search('2', in: :body)).to contain_exactly ticket2 }
   end
 end
