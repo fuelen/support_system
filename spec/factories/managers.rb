@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   factory :manager do
-    username 'vasyan'
+    sequence(:username) { |n| "vasyan-#{n}" }
     password '123456'
   end
 end
