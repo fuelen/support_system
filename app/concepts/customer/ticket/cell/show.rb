@@ -13,7 +13,7 @@ module Customer::Ticket::Cell
 
     def message_form
       OpenStruct.new(
-        contract: options[:contract_message],
+        contract: options['contract.message'],
         url: model
       )
     end

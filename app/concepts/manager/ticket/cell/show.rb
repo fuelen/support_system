@@ -4,7 +4,7 @@ module Manager::Ticket
       # overwrite message_form because we want to use another url
       def message_form
         OpenStruct.new(
-          contract: options[:contract_message],
+          contract: options['contract.message'],
           url: [:manager, model]
         )
       end

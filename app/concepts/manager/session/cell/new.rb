@@ -2,6 +2,8 @@ module Manager::Session::Cell
   class New < Trailblazer::Cell
     include SimpleForm::ActionViewExtensions::FormHelper
 
-    property :contract
+    def contract
+      options[:contract]
+    end
   end
 end

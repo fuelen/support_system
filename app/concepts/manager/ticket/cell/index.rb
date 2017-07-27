@@ -3,7 +3,10 @@ module Manager::Ticket
     class Index < Trailblazer::Cell
       property :collection
       property :current_view
-      property :contract_search
+
+      def contract_search
+        model['contract.search']
+      end
 
       def views
         Manager::Ticket::Index::ALLOWED_VIEWS.map do |view|

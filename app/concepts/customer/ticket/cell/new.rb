@@ -3,7 +3,9 @@ module Customer::Ticket::Cell
     include SimpleForm::ActionViewExtensions::FormHelper
     include ActionView::Helpers::FormOptionsHelper
 
-    property :contract
+    def contract
+      options[:contract]
+    end
 
     def departments
       ::Rails.application.config.departments

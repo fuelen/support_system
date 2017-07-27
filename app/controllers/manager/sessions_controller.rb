@@ -5,7 +5,7 @@ class Manager
 
     def new
       run Session::Build
-      render concept(Session::Cell::New, OpenStruct.new(contract: @form))
+      render_concept(Session::Cell::New)
     end
 
     def create
@@ -13,7 +13,7 @@ class Manager
         authenticator.sign_in!(@model, scope: :manager)
         return redirect_to manager_tickets_path
       end
-      render concept(Session::Cell::New, OpenStruct.new(contract: @form))
+      render_concept(Session::Cell::New)
     end
 
     def destroy
