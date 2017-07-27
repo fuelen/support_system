@@ -1,0 +1,4 @@
+h1 Hi #{@message.ticket.customer_name}
+p Your ticket (#{@message.ticket.reference}) has new response:
+p = @message.text
+p You can track changes here: #{link_to ticket_url(@message.ticket), ticket_url(@message.ticket)}

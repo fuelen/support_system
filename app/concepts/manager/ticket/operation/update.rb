@@ -11,6 +11,7 @@ module Manager::Ticket
       step :save_message!
       step :save_ticket!
     }
+    step :send_notification!
 
     def sync_message!(options, *)
       options['message'] = options['contract.message'].sync
@@ -40,6 +41,10 @@ module Manager::Ticket
 
     def save_ticket!(_options, model:, **)
       model.save
+    end
+
+    def send_notification!(_options, message:, **)
+      CustomerMailer.delay.new_reply(message.id)
     end
   end
 end

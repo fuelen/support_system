@@ -24,4 +24,5 @@ describe Manager::Ticket::Update do
   it { expect(operation['message'].new_status_id).to eq new_status.id }
   it { expect(operation['message'].new_owner_id).to eq manager2.id }
   it { expect(operation['message'].author_id).to eq manager1.id }
+  it { expect(CustomerMailer.instance_method(:new_reply)).to be_delayed operation['message'].id }
 end
