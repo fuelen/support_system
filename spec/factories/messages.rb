@@ -29,6 +29,6 @@
 FactoryGirl.define do
   factory :message do
     ticket
-    text "MyText"
+    text 'MyText'
   end
 end

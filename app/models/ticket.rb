@@ -35,6 +35,10 @@ class Ticket < ApplicationRecord
     where(owner_id: nil)
   end)
 
+  scope :search, (lambda do |query, options|
+    where("#{table_name}.#{options[:in]} LIKE ?", "%#{query}%")
+  end)
+
   Status.kinds.keys.each do |status_kind|
     scope status_kind, (lambda do
       joins(:status).where(statuses: { kind: status_kind }).where.not(owner_id: nil)

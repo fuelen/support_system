@@ -4,7 +4,11 @@ class Manager
 
     def index
       run Ticket::Index
+      if result['ticket_by_query'].present?
+        return redirect_to [:manager, result['ticket_by_query']]
+      end
       render concept(Ticket::Cell::Index, OpenStruct.new(
+                                            contract_search: result['contract.search'],
                                             collection: result['collection'],
                                             current_view: result['current_view']
       ))

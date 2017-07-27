@@ -1,0 +1,4 @@
+= simple_form_for contract, url: url, method: :get, as: :message do |f|
+  = f.input :query, label: false, input_html: { name: :query }
+  = f.input :view, as: :hidden, input_html: { name: :view }
+  = f.button :submit, 'Search'
