@@ -14,6 +14,14 @@ describe Manager::TicketsController, type: :controller do
       before { get :index }
       it { expect(response).to be_success }
     end
+
+    context 'redirect on search' do
+      let!(:ticket) { create :ticket }
+      before { sign_in manager, :manager }
+      before { get :index, params: { query: ticket.reference } }
+
+      it { expect(response).to redirect_to [:manager, ticket] }
+    end
   end
 
   describe 'GET #show' do
